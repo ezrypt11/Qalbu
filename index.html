@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QALBU Modest Wear</title>
+<style>
+:root{--cream:#fbf6f0;--rose:#8a5d56;--rose2:#b9877d;--ink:#3d302e;--muted:#887975;--line:#eadbd3;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+button,a{font:inherit}button{cursor:pointer}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:rgba(255,255,255,.9);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:9px;color:var(--rose);text-decoration:none}.brand-mark{height:37px;width:37px;border:1.5px solid var(--rose);border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:22px;font-style:italic}.brand-name{font-family:Georgia,serif;font-size:19px;letter-spacing:2px}.brand-sub{font-size:8px;letter-spacing:2px;margin-top:3px}.top-actions{display:flex;align-items:center;gap:15px}.iconbtn{border:0;background:transparent;color:var(--rose);font-size:25px;padding:4px}.cartcount{font-size:11px;vertical-align:top;background:var(--rose);color:white;border-radius:20px;padding:2px 5px}
+.drawer{display:none;position:fixed;inset:0;background:#0006;z-index:10}.drawer.open{display:block}.drawer-panel{margin-left:auto;width:min(82%,320px);height:100%;background:var(--cream);padding:23px}.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.navlink{display:block;padding:15px 5px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}.navlink:hover{color:var(--rose)}
+main{max-width:1000px;margin:auto;padding:18px 15px 35px}.hero{position:relative;min-height:230px;border-radius:15px;overflow:hidden;background:linear-gradient(125deg,#e5c9bd,#f6e8dd 52%,#c99e92);display:flex;align-items:center;padding:25px;color:#593b37}.hero:after{content:"";position:absolute;width:210px;height:280px;border:1px solid #ffffff99;border-radius:50%;right:-45px;top:-28px;transform:rotate(28deg)}.hero-copy{max-width:65%;position:relative;z-index:1}.eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase}.hero h1{font-family:Georgia,serif;font-size:32px;font-weight:normal;line-height:1.12;margin:12px 0}.hero p{font-size:12px;line-height:1.6}.primary{background:var(--rose);color:white;border:0;border-radius:30px;padding:11px 18px;font-size:12px;margin-top:7px}.hero-art{position:absolute;right:20px;bottom:-8px;font-size:115px;opacity:.4;transform:rotate(-8deg)}
+.dots{display:flex;justify-content:center;gap:7px;margin:12px}.dot{height:6px;width:6px;border-radius:50%;background:#d7bdb3}.dot.active{background:var(--rose);width:18px;border-radius:8px}
+.intro{text-align:center;padding:25px 0 19px}.logo-big{width:70px;height:70px;border:1.5px solid var(--rose);border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;color:var(--rose);font-family:Georgia,serif;font-size:43px;font-style:italic}.intro h2{font-family:Georgia,serif;font-weight:normal;letter-spacing:3px;font-size:22px;margin:4px}.intro p{font-size:11px;letter-spacing:1.5px;color:var(--muted);margin:7px}
+.section-title{text-align:center;font-family:Georgia,serif;font-size:21px;font-weight:normal;margin:18px 0 14px}.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.category{background:white;border:1px solid var(--line);border-radius:12px;padding:17px 5px;text-align:center;color:var(--rose);text-decoration:none}.category .symbol{font-size:29px;display:block;margin-bottom:8px}.category strong{font-size:12px;letter-spacing:1px}.category small{display:block;font-size:10px;color:var(--muted);margin-top:5px}
+.page-heading{display:flex;align-items:end;justify-content:space-between;margin:22px 0 15px}.page-heading h2{font-family:Georgia,serif;font-weight:normal;font-size:24px;margin:0}.page-heading span{font-size:11px;color:var(--muted)}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.product{background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden}.product-art{height:160px;display:grid;place-items:center;position:relative;background:linear-gradient(145deg,#f3e6dd,#e3c9be);overflow:hidden}.fabric{width:93px;height:115px;border-radius:48% 48% 35% 35%;background:#b9877d;clip-path:polygon(25% 0,75% 0,100% 36%,76% 100%,22% 100%,0 36%);filter:drop-shadow(0 5px 5px #77564a44)}.fabric.f2{background:#d4c6b4}.fabric.f3{background:#8e777b}.fabric.f4{background:#c9a5a0}.fabric.f5{background:#6f7467}.fabric.f6{background:#e4d7c9}.pill{position:absolute;top:9px;left:9px;background:#fff9f5;color:var(--rose);font-size:9px;padding:5px 7px;border-radius:20px}.product-info{padding:11px}.product-info h3{font-size:13px;margin:0 0 6px;font-weight:600}.product-info p{font-size:10px;color:var(--muted);margin:0 0 10px}.price-row{display:flex;align-items:center;justify-content:space-between;gap:5px}.price{font-weight:bold;font-size:14px;color:var(--rose)}.add{border:1px solid var(--rose);color:var(--rose);background:white;border-radius:20px;padding:7px 10px;font-size:10px}.add:hover{background:var(--rose);color:white}
+.tracking{background:white;border:1px solid var(--line);border-radius:13px;padding:18px;margin-top:22px}.tracking h3{font-family:Georgia,serif;font-weight:normal;margin:0 0 8px}.tracking p{font-size:12px;color:var(--muted)}.track-form{display:flex;gap:8px}.track-form input{min-width:0;flex:1;border:1px solid var(--line);border-radius:9px;padding:11px;font-size:12px}.notice{font-size:11px;color:var(--rose);margin-top:10px;min-height:14px}
+footer{text-align:center;padding:24px 10px 12px;color:var(--muted);font-size:10px;line-height:1.8}footer strong{letter-spacing:2px;color:var(--rose)}
+@media(min-width:650px){main{padding-top:28px}.hero{min-height:300px;padding:40px}.hero h1{font-size:43px}.hero-art{font-size:160px}.products{grid-template-columns:repeat(3,minmax(0,1fr))}.product-art{height:210px}.categories{gap:16px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home" aria-label="QALBU Home"><span class="brand-mark">Q</span><span><span class="brand-name">QALBU</span><span class="brand-sub" style="display:block">MODEST WEAR</span></span></a>
+  <div class="top-actions"><button class="iconbtn" aria-label="Troli" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">♧<span class="cartcount" id="cartcount">0</span></button><button class="iconbtn" aria-label="Buka menu" onclick="toggleMenu(true)">☰</button></div>
+</header>
+<div class="drawer" id="drawer" onclick="if(event.target===this)toggleMenu(false)"><div class="drawer-panel"><div class="drawer-head"><span class="brand-name">MENU QALBU</span><button class="iconbtn" onclick="toggleMenu(false)" aria-label="Tutup menu">×</button></div><a class="navlink" href="#home" onclick="toggleMenu(false)">⌂ &nbsp; Home</a><a class="navlink" href="#shawl" onclick="showCategory('Shawl');toggleMenu(false)">Shawl</a><a class="navlink" href="#produk" onclick="showCategory('Bawal');toggleMenu(false)">Bawal</a><a class="navlink" href="#produk" onclick="showCategory('Sarung');toggleMenu(false)">Tudung Sarung</a><a class="navlink" href="#promo" onclick="toggleMenu(false)">✧ &nbsp; Promo</a><a class="navlink" href="#tracking" onclick="toggleMenu(false)">▣ &nbsp; Order Tracking</a></div></div>
+<main id="home">
+  <section class="hero" id="hero"><div class="hero-copy"><div class="eyebrow">Koleksi terkini · QALBU</div><h1>Cantik Dari<br>Hati.</h1><p>Gaya modest yang ringkas, selesa dan yakin untuk setiap hari.</p><button class="primary" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">TEROKA KOLEKSI ↗</button></div><div class="hero-art">❋</div></section>
+  <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+  <section class="intro"><div class="logo-big">Q</div><h2>QALBU</h2><p>MODEST WEAR · CANTIK DARI HATI</p></section>
+  <h2 class="section-title">Cari Gaya Pilihan</h2>
+  <section class="categories"><a class="category" href="#produk" onclick="showCategory('Shawl')"><span class="symbol">〰</span><strong>SHAWL</strong><small>Lembut & flowy</small></a><a class="category" href="#produk" onclick="showCategory('Bawal')"><span class="symbol">◇</span><strong>BAWAL</strong><small>Kemas & klasik</small></a><a class="category" href="#produk" onclick="showCategory('Sarung')"><span class="symbol">◡</span><strong>SARUNG</strong><small>Mudah digayakan</small></a></section>
+  <section id="produk"><div class="page-heading"><h2 id="productTitle">Koleksi QALBU</h2><span>Semua bawah RM25</span></div><div class="products" id="productGrid"></div></section>
+  <section class="tracking" id="tracking"><h3>Semak Pesanan</h3><p>Masukkan nombor pesanan untuk menyemak status.</p><form class="track-form" onsubmit="trackOrder(event)"><input id="orderId" placeholder="Contoh: QALBU-001" aria-label="Nombor pesanan" required><button class="primary" style="margin:0">Semak</button></form><div class="notice" id="trackNotice"></div></section>
+  <section class="tracking" id="promo"><h3>Promo QALBU</h3><p>Gaya cantik tak semestinya mahal. Nantikan promosi dan koleksi baharu kami.</p><button class="primary" onclick="alert('Terima kasih kerana berminat dengan QALBU!')">Saya berminat</button></section>
+</main>
+<footer><strong>QALBU MODEST WEAR</strong><br>Cantik Dari Hati.<br>© <span id="year"></span> QALBU. Semua hak cipta terpelihara.<br><span style="font-size:9px">Demo website — produk, harga dan semakan pesanan ialah contoh.</span></footer>
+<script>
+const products=[
+{name:'Shawl Soft Flow',category:'Shawl',price:19.90,color:'f1',desc:'Lembut · Mudah dibentuk',tag:'BESTSELLER'},
+{name:'Shawl Daily',category:'Shawl',price:17.90,color:'f2',desc:'Ringan · Selesa dipakai',tag:'NEW'},
+{name:'Bawal Classic',category:'Bawal',price:15.90,color:'f3',desc:'Kemas · Gaya harian',tag:''},
+{name:'Bawal Premium',category:'Bawal',price:22.90,color:'f4',desc:'Lembut · Nampak eksklusif',tag:'POPULAR'},
+{name:'Tudung Sarung Easy',category:'Sarung',price:18.90,color:'f5',desc:'Sarung terus · Praktikal',tag:''},
+{name:'Sarung Basic',category:'Sarung',price:14.90,color:'f6',desc:'Ringkas · Selesa',tag:'VALUE'}
+];
+let count=0;
+function renderProducts(category='Semua'){const list=category==='Semua'?products:products.filter(p=>p.category===category);document.getElementById('productTitle').textContent=category==='Semua'?'Koleksi QALBU':category+' QALBU';document.getElementById('productGrid').innerHTML=list.map(p=>`<article class="product"><div class="product-art"><span class="pill">${p.tag||p.category.toUpperCase()}</span><div class="fabric ${p.color}"></div></div><div class="product-info"><h3>${p.name}</h3><p>${p.desc}</p><div class="price-row"><span class="price">RM ${p.price.toFixed(2)}</span><button class="add" onclick="addToCart()">+ Troli</button></div></div></article>`).join('')}
+function showCategory(category){renderProducts(category)}
+function addToCart(){count++;document.getElementById('cartcount').textContent=count;alert('Produk ditambah ke troli demo.')}
+function toggleMenu(open){document.getElementById('drawer').classList.toggle('open',open)}
+function trackOrder(e){e.preventDefault();document.getElementById('trackNotice').textContent='Ini demo sahaja. Sambungkan sistem pesanan sebenar untuk menyemak status.'}
+document.getElementById('year').textContent=new Date().getFullYear();renderProducts();
+</script>
+</body>
+</html>
